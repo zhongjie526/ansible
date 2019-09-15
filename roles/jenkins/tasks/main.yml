@@ -3,11 +3,11 @@
 - name: Import Jenkins GPG key
   rpm_key:
     state: present
-    key: http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+    key: http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key
 
 - name: Add Jenkins repository
   yum_repository:
-    name: jenkens
+    name: jenkins
     description: jenkins repository
     baseurl: http://pkg.jenkins.io/redhat
     enabled: no
@@ -18,3 +18,10 @@
     name: jenkins
     enablerepo: jenkins
     state: present
+
+- name: Start Jenkins 
+  service: 
+    name: jenkins 
+    enabled: yes 
+    state: started 
+
